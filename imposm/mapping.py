@@ -339,10 +339,11 @@ class GeneralizedTable(object):
         self.where = where
 
 class UnionView(object):
-    def __init__(self, name, mappings, fields):
+    def __init__(self, name, mappings, fields, where=None):
         self.name = name
         self.mappings = mappings
         self.fields = fields
+        self.where = where or {}
         self._add_name_field()
         self._add_type_field()
 
