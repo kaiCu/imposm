@@ -368,8 +368,8 @@ class PostGISUnionView(object):
 
         for mapping in self.mapping.mappings:
             field_str = ', '.join(self._mapping_fields(mapping))
-            if self.mapping.where.has_key(mapping.name):
-                where = ' WHERE ' + self.mapping.where.get(mapping.name, '')
+            if mapping.name in self.mapping.where:
+                where = ' WHERE ' + self.mapping.where[mapping.name]
             else:
                 where = ''
             selects.append("""SELECT %s osm_id, geometry, %s,
